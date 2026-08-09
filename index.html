@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Gestionnaire de tache</title>
+  </head>
+
+  <body>
+    <header>
+      <section class="entete">
+        <h1>Task Manager</h1>
+      </section>
+
+      <section class="analytics">
+        <h2>Analytics</h2>
+        <article>
+          <div class="icon">
+            <i class="ri-list-check"></i>
+          </div>
+          <div class="stats">
+            <div class="stats__chiffre" id="stats__chiffre"></div>
+            <p class="stats__description">Total Tâches</p>
+          </div>
+        </article>
+
+        <article>
+          <div class="icon">
+            <i class="ri-check-double-line"></i>
+          </div>
+          <div class="stats">
+            <div class="stats__chiffre" id="stats__chiffre"></div>
+            <p class="stats__description">Tâches Terminées</p>
+          </div>
+        </article>
+
+        <article>
+          <div class="icon">
+            <i class="ri-line-chart-line"></i>
+          </div>
+          <div class="stats">
+            <div class="stats__chiffre" id="stats__chiffre"></div>
+            <p class="stats__description">Taux de complétion</p>
+          </div>
+        </article>
+      </section>
+    </header>
+
+    <script src="./assets/js/tache.js"></script>
+  </body>
+</html>
