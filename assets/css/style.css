@@ -35,7 +35,8 @@ body {
     margin: 0 auto;
   }
 
-  header {
+  header,
+  main {
     background-color: var(--background-clair);
     padding: 2rem;
   }
@@ -53,7 +54,8 @@ body {
     gap: 1.5rem;
   }
 
-  .analytics h2 {
+  .analytics h2,
+  .features h2 {
     font-size: 1rem;
     margin-bottom: 1rem;
   }
@@ -75,5 +77,96 @@ body {
 
   article .stats__chiffre {
     padding: 0.5rem;
+  }
+
+  /*===================
+  ===========
+  ==MAIN======*/
+  .features__filter {
+    margin-bottom: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  form input {
+    border-radius: 0.5rem;
+    padding: 12px 40px 12px 45px;
+    border: 1px solid var(--border);
+    outline: none;
+    margin-bottom: 0.5rem;
+  }
+
+  form input:focus,
+  form select:focus {
+    border-color: var(--primary-foncé);
+  }
+
+  form .saisis {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    width: 100px;
+    pointer-events: none;
+  }
+
+  form select {
+    border: 1px solid var(--border);
+    margin-bottom: 0.5rem;
+    padding: 12px 40px 12px 15px;
+    border-radius: 0.7rem;
+  }
+
+  form button {
+    border: none;
+    background-color: var(--primary);
+    padding: 1rem;
+    color: var(--primary-clair);
+    font-weight: 600;
+    border-radius: 0.7rem;
+    transition: 1s ease;
+  }
+
+  form button:hover {
+    cursor: pointer;
+    background-color: var(--primary-foncé);
+  }
+
+  .features__tri {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .features__tri button {
+    border: none;
+    background-color: var(--primary);
+    padding: 1rem;
+    color: var(--primary-clair);
+    font-weight: 600;
+    border-radius: 0.7rem;
+  }
+
+  .features__tri button:hover {
+    cursor: pointer;
+  }
+
+  .features__tri .encours,
+  .features__tri .terminee {
+    background-color: var(--background);
+    color: var(--text-principal);
+    border: var(--border);
+  }
+  .features__tri .encours i {
+    color: var(--warning);
+  }
+  .features__tri .terminee i {
+    color: var(--succes);
   }
 }
