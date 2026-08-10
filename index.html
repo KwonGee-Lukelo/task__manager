@@ -57,7 +57,7 @@
         <section class="features__filter">
           <form action="">
             <input type="text" placeholder="Titre de la tâche..." />
-            <i class="ri-list-check-3" aria-hidden="true"></i>
+            <i class="ri-list-indefinite saisis" aria-hidden="true"></i>
 
             <select id="priority">
               <option value="" selected>Priotité</option>
@@ -73,9 +73,13 @@
         </section>
 
         <section class="features__tri">
-          <button><i class="ri-dashboard-line"></i>Toutes</button>
-          <button><i class="ri-progress-3-fill"></i>En cours</button>
-          <button><i class="ri-checkbox-fill"></i>Terminées</button>
+          <button class="tous"><i class="ri-dashboard-line"></i>Toutes</button>
+          <button class="encours">
+            <i class="ri-progress-3-fill"></i>En cours
+          </button>
+          <button class="terminee">
+            <i class="ri-checkbox-fill"></i>Terminées
+          </button>
         </section>
       </section>
     </main>
