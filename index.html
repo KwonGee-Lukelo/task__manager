@@ -64,7 +64,12 @@
         <h2>Ajouter une tâche</h2>
         <section class="features__filter">
           <form action="">
-            <input type="text" placeholder="Titre de la tâche..." />
+            <input
+              type="text"
+              name="task"
+              id="task"
+              placeholder="Titre de la tâche..."
+            />
             <i class="ri-list-indefinite saisis" aria-hidden="true"></i>
 
             <select id="priority">
@@ -74,9 +79,10 @@
               <option value="Basse">Basse</option>
             </select>
 
-            <button type="submit" value="Ajouter">
+            <button type="submit" value="Ajouter" id="submit">
               <i class="ri-add-line"></i> Ajouter
             </button>
+            <p id="error"></p>
           </form>
         </section>
 
