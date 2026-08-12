@@ -92,15 +92,26 @@ function displayTask() {
 
 document.addEventListener("click", (event) => {
   const completeButton = event.target.closest(".complete-btn");
+  const deleteButton = event.target.closest(".delete-btn");
 
-  if (!completeButton) return;
+  if (completeButton) {
+    const index = Number(completeButton.dataset.index);
 
-  const index = Number(completeButton.dataset.index);
+    if (Number.isNaN(index) || !tableTask[index]) return;
 
-  if (Number.isNaN(index) || !tableTask[index]) return;
+    tableTask[index].completed = !tableTask[index].completed;
+    displayTask();
+    return;
+  }
 
-  tableTask[index].completed = !tableTask[index].completed;
-  displayTask();
+  if (deleteButton) {
+    const index = Number(deleteButton.dataset.index);
+
+    if (Number.isNaN(index) || !tableTask[index]) return;
+
+    tableTask.splice(index, 1);
+    displayTask();
+  }
 });
 
 // ECOUTER L'EVENEMENT DU BOUTON SUBMIT
