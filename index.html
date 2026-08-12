@@ -87,42 +87,21 @@
         </section>
 
         <section class="features__tri">
-          <button class="tous"><i class="ri-dashboard-line"></i>Toutes</button>
-          <button class="encours">
+          <button class="tous" id="all">
+            <i class="ri-dashboard-line"></i>Toutes
+          </button>
+          <button class="encours" id="inProgress">
             <i class="ri-progress-3-fill"></i>En cours
           </button>
-          <button class="terminee">
+          <button class="terminee" id="completed">
             <i class="ri-checkbox-fill"></i>Terminées
           </button>
         </section>
       </section>
 
-      <section class="tasks">
+      <section class="tasks" id="task__list">
         <table class="table__form">
-          <tbody>
-            <tr>
-              <td>
-                <div class="item__group">
-                  <div class="checkbox">
-                    <input type="checkbox" name="" id="task__2" />
-                    <label for="task__2">Créer la maquette HTML</label>
-                  </div>
-
-                  <div class="badge">
-                    <span class="badge__haute"></span>
-                    <p class="text__badgeHaute">Haute</p>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="action__group">
-                  <button><i class="ri-checkbox-circle-line"></i></button>
-                  <button><i class="ri-delete-bin-6-line"></i></button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
+          <tbody class="table__body"></tbody>
         </table>
       </section>
     </main>
