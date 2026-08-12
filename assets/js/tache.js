@@ -5,30 +5,34 @@ const submitForm = document.getElementById("submit");
 const errorMessage = document.getElementById("error");
 const sectionTask = document.getElementById("task__list");
 
+// RECUPERER LES DONNEES DU FORMULAIRE
 function retrieveData() {
   let prioritySelected = priority.value;
   let taskValue = task.value.trim();
 
-  return { task: taskValue, priority: prioritySelected };
+  return { task: taskValue, priority: prioritySelected, completed: false };
 }
 
+// AFFICHER LES TACHES
 function displayTask() {
   let tableBody = document.querySelector(".table__body");
   tableBody.innerHTML = "";
 
   for (let i = 0; i < tableTask.length; i++) {
     const item = tableTask[i];
+    const priorityName = (item.priority || "").toLowerCase();
+    const isCompleted = Boolean(item.completed);
 
     let badgeClass = "";
     let textBadgeClass = "";
 
-    if (item.priority === "Haute") {
+    if (priorityName === "haute") {
       badgeClass = "badge__haute";
       textBadgeClass = "text__badgeHaute";
-    } else if (item.priority === "Moyenne") {
+    } else if (priorityName === "moyenne") {
       badgeClass = "badge__moyenne";
       textBadgeClass = "text__badgeMoyenne";
-    } else if (item.priority === "Basse") {
+    } else if (priorityName === "basse") {
       badgeClass = "badge__basse";
       textBadgeClass = "text__badgeBasse";
     }
@@ -39,8 +43,19 @@ function displayTask() {
       <td>
         <div class="item__group">
           <div class="checkbox">
-            <input type="checkbox" name="" id="task__${i}" />
-            <label for="task__${i}">${item.task}</label>
+            <input
+              type="checkbox"
+              name=""
+              id="task__${i}"
+              ${isCompleted ? "checked" : ""}
+              style="${isCompleted ? "accent-color: #10b981;" : ""}"
+            />
+            <label
+              for="task__${i}"
+              style="${isCompleted ? "color: #94a3b8; text-decoration: line-through;" : ""}"
+            >
+              ${item.task}
+            </label>
           </div>
 
           <div class="badge">
@@ -52,8 +67,21 @@ function displayTask() {
 
       <td>
         <div class="action__group">
-          <button><i class="ri-checkbox-circle-line"></i></button>
-          <button><i class="ri-delete-bin-6-line"></i></button>
+          <button
+            type="button"
+            class="complete-btn"
+            data-index="${i}"
+            id="complete-${i}"
+            style="${isCompleted ? "border-color: #10b981;" : ""}"
+          >
+            <i
+              class="ri-checkbox-circle-line"
+              style="${isCompleted ? "color: #10b981;" : ""}"
+            ></i>
+          </button>
+          <button type="button" class="delete-btn" data-index="${i}" id="delete-${i}">
+            <i class="ri-delete-bin-6-line"></i>
+          </button>
         </div>
       </td>
     `;
@@ -62,6 +90,20 @@ function displayTask() {
   }
 }
 
+document.addEventListener("click", (event) => {
+  const completeButton = event.target.closest(".complete-btn");
+
+  if (!completeButton) return;
+
+  const index = Number(completeButton.dataset.index);
+
+  if (Number.isNaN(index) || !tableTask[index]) return;
+
+  tableTask[index].completed = !tableTask[index].completed;
+  displayTask();
+});
+
+// ECOUTER L'EVENEMENT DU BOUTON SUBMIT
 submitForm.addEventListener("click", (e) => {
   e.preventDefault();
   let data = retrieveData();
