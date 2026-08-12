@@ -6,20 +6,27 @@ const errorMessage = document.getElementById("error");
 
 function retrieveData() {
   let prioritySelected = priority.value;
-  let taskValue = task.value;
+  let taskValue = task.value.trim();
 
   return { task: taskValue, priority: prioritySelected };
 }
 
 submitForm.addEventListener("click", (e) => {
+  e.preventDefault();
   let data = retrieveData();
 
   if (data.task.trim() === "" || data.priority === "") {
-    e.preventDefault();
-
     errorMessage.textContent =
       "Veuillez remplir le champs et choisir la priorité svp!";
     errorMessage.style.color = "#ef4444";
     return;
   }
+
+  tableTask.push(data);
+
+  task.value = "";
+  priority.value = "";
+  task.focus();
+
+  console.log(tableTask);
 });
