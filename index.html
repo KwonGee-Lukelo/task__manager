@@ -24,7 +24,7 @@
             <i class="ri-list-check" aria-hidden="true"></i>
           </div>
           <div class="stats">
-            <div class="stats__chiffre" id="stats__chiffre"></div>
+            <div class="stats__chiffre" id="stats-total"></div>
             <p class="stats__description">Total Tâches</p>
           </div>
         </article>
@@ -34,7 +34,7 @@
             <i class="ri-check-double-line" aria-hidden="true"></i>
           </div>
           <div class="stats">
-            <div class="stats__chiffre" id="stats__chiffre"></div>
+            <div class="stats__chiffre" id="stats-completed"></div>
             <p class="stats__description">Tâches Terminées</p>
           </div>
         </article>
@@ -44,7 +44,7 @@
             <i class="ri-line-chart-line" aria-hidden="true"></i>
           </div>
           <div class="stats">
-            <div class="stats__chiffre" id="stats__chiffre"></div>
+            <div class="stats__chiffre" id="stats-progress"></div>
             <p class="stats__description">Taux de complétion</p>
           </div>
         </article>
@@ -53,8 +53,8 @@
       <section class="progress__bar">
         <h2>Progression</h2>
         <div class="progress__group">
-          <div class="bar"></div>
-          <span class="pourcentage"></span>
+          <div class="bar" id="progress-bar"></div>
+          <span class="pourcentage" id="progress-percentage"></span>
         </div>
       </section>
     </header>

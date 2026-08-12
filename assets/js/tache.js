@@ -9,6 +9,9 @@ const inProgressButton = document.getElementById("inProgress");
 const completedButton = document.getElementById("completed");
 const totalTaskCount = document.getElementById("stats-total");
 const completedTaskCount = document.getElementById("stats-completed");
+const progressStats = document.getElementById("stats-progress");
+const progressBar = document.getElementById("progress-bar");
+const progressPercentage = document.getElementById("progress-percentage");
 let currentFilter = "all";
 
 // RECUPERER LES DONNEES DU FORMULAIRE
@@ -32,17 +35,36 @@ function getFilteredTasks() {
 }
 
 function updateStats() {
+  const total = tableTask.length;
+  const completedCount = tableTask.filter((item) => item.completed).length;
+  const percentage =
+    total === 0 ? 0 : Math.round((completedCount / total) * 100);
+
   if (totalTaskCount) {
-    totalTaskCount.textContent = tableTask.length;
+    totalTaskCount.textContent = total;
     totalTaskCount.style.fontSize = "2rem";
     totalTaskCount.style.fontWeight = "bold";
   }
 
   if (completedTaskCount) {
-    const completedCount = tableTask.filter((item) => item.completed).length;
     completedTaskCount.textContent = completedCount;
     completedTaskCount.style.fontSize = "2rem";
     completedTaskCount.style.fontWeight = "bold";
+  }
+
+  if (progressStats) {
+    progressStats.textContent = `${percentage}%`;
+    progressStats.style.fontSize = "2rem";
+    progressStats.style.fontWeight = "bold";
+  }
+
+  if (progressBar) {
+    progressBar.style.width = total === 0 ? "0%" : `${percentage}%`;
+    progressBar.style.backgroundColor = total === 0 ? "transparent" : "#3b82f6";
+  }
+
+  if (progressPercentage) {
+    progressPercentage.textContent = `${percentage}%`;
   }
 }
 
@@ -207,3 +229,5 @@ submitForm.addEventListener("click", (e) => {
   updateStats();
   displayTask();
 });
+
+updateStats();
