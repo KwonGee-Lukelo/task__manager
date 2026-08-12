@@ -7,7 +7,8 @@ const sectionTask = document.getElementById("task__list");
 const allButton = document.getElementById("all");
 const inProgressButton = document.getElementById("inProgress");
 const completedButton = document.getElementById("completed");
-const totalTaskCount = document.getElementById("stats__chiffre");
+const totalTaskCount = document.getElementById("stats-total");
+const completedTaskCount = document.getElementById("stats-completed");
 let currentFilter = "all";
 
 // RECUPERER LES DONNEES DU FORMULAIRE
@@ -31,11 +32,18 @@ function getFilteredTasks() {
 }
 
 function updateStats() {
-  if (!totalTaskCount) return;
+  if (totalTaskCount) {
+    totalTaskCount.textContent = tableTask.length;
+    totalTaskCount.style.fontSize = "2rem";
+    totalTaskCount.style.fontWeight = "bold";
+  }
 
-  totalTaskCount.textContent = tableTask.length;
-  totalTaskCount.style.fontSize = "2rem";
-  totalTaskCount.style.fontWeight = "bold";
+  if (completedTaskCount) {
+    const completedCount = tableTask.filter((item) => item.completed).length;
+    completedTaskCount.textContent = completedCount;
+    completedTaskCount.style.fontSize = "2rem";
+    completedTaskCount.style.fontWeight = "bold";
+  }
 }
 
 // AFFICHER LES TACHES
