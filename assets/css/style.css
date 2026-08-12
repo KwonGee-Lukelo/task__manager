@@ -63,6 +63,7 @@ body {
 
   .analytics article {
     display: flex;
+    align-items: center;
     gap: 2rem;
     background-color: var(--border);
     padding: 2rem;
