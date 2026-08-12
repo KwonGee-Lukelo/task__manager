@@ -4,6 +4,11 @@ const task = document.getElementById("task");
 const submitForm = document.getElementById("submit");
 const errorMessage = document.getElementById("error");
 const sectionTask = document.getElementById("task__list");
+const allButton = document.getElementById("all");
+const inProgressButton = document.getElementById("inProgress");
+const completedButton = document.getElementById("completed");
+const totalTaskCount = document.getElementById("stats__chiffre");
+let currentFilter = "all";
 
 // RECUPERER LES DONNEES DU FORMULAIRE
 function retrieveData() {
@@ -13,13 +18,54 @@ function retrieveData() {
   return { task: taskValue, priority: prioritySelected, completed: false };
 }
 
+function getFilteredTasks() {
+  if (currentFilter === "inProgress") {
+    return tableTask.filter((item) => item.completed === false);
+  }
+
+  if (currentFilter === "completed") {
+    return tableTask.filter((item) => item.completed === true);
+  }
+
+  return tableTask;
+}
+
+function updateStats() {
+  if (!totalTaskCount) return;
+
+  totalTaskCount.textContent = tableTask.length;
+  totalTaskCount.style.fontSize = "2rem";
+  totalTaskCount.style.fontWeight = "bold";
+}
+
 // AFFICHER LES TACHES
 function displayTask() {
   let tableBody = document.querySelector(".table__body");
   tableBody.innerHTML = "";
+  const filteredTasks = getFilteredTasks();
 
-  for (let i = 0; i < tableTask.length; i++) {
-    const item = tableTask[i];
+  if (filteredTasks.length === 0) {
+    let emptyRow = document.createElement("tr");
+    let emptyMessage =
+      currentFilter === "inProgress"
+        ? "Aucune tâche en cours"
+        : currentFilter === "completed"
+          ? "Aucune tâche terminée"
+          : "Aucune tâche";
+
+    emptyRow.innerHTML = `
+      <td colspan="2" style="text-align: center; color: #64748b; padding: 1rem;">
+        ${emptyMessage}
+      </td>
+    `;
+
+    tableBody.appendChild(emptyRow);
+    return;
+  }
+
+  for (let i = 0; i < filteredTasks.length; i++) {
+    const item = filteredTasks[i];
+    const realIndex = tableTask.indexOf(item);
     const priorityName = (item.priority || "").toLowerCase();
     const isCompleted = Boolean(item.completed);
 
@@ -46,12 +92,12 @@ function displayTask() {
             <input
               type="checkbox"
               name=""
-              id="task__${i}"
+              id="task__${realIndex}"
               ${isCompleted ? "checked" : ""}
               style="${isCompleted ? "accent-color: #10b981;" : ""}"
             />
             <label
-              for="task__${i}"
+              for="task__${realIndex}"
               style="${isCompleted ? "color: #94a3b8; text-decoration: line-through;" : ""}"
             >
               ${item.task}
@@ -70,8 +116,8 @@ function displayTask() {
           <button
             type="button"
             class="complete-btn"
-            data-index="${i}"
-            id="complete-${i}"
+            data-index="${realIndex}"
+            id="complete-${realIndex}"
             style="${isCompleted ? "border-color: #10b981;" : ""}"
           >
             <i
@@ -79,7 +125,7 @@ function displayTask() {
               style="${isCompleted ? "color: #10b981;" : ""}"
             ></i>
           </button>
-          <button type="button" class="delete-btn" data-index="${i}" id="delete-${i}">
+          <button type="button" class="delete-btn" data-index="${realIndex}" id="delete-${realIndex}">
             <i class="ri-delete-bin-6-line"></i>
           </button>
         </div>
@@ -100,6 +146,7 @@ document.addEventListener("click", (event) => {
     if (Number.isNaN(index) || !tableTask[index]) return;
 
     tableTask[index].completed = !tableTask[index].completed;
+    updateStats();
     displayTask();
     return;
   }
@@ -110,8 +157,24 @@ document.addEventListener("click", (event) => {
     if (Number.isNaN(index) || !tableTask[index]) return;
 
     tableTask.splice(index, 1);
+    updateStats();
     displayTask();
   }
+});
+
+allButton.addEventListener("click", () => {
+  currentFilter = "all";
+  displayTask();
+});
+
+inProgressButton.addEventListener("click", () => {
+  currentFilter = "inProgress";
+  displayTask();
+});
+
+completedButton.addEventListener("click", () => {
+  currentFilter = "completed";
+  displayTask();
 });
 
 // ECOUTER L'EVENEMENT DU BOUTON SUBMIT
@@ -133,5 +196,6 @@ submitForm.addEventListener("click", (e) => {
   task.focus();
 
   console.log(tableTask);
+  updateStats();
   displayTask();
 });
