@@ -22,6 +22,7 @@ function retrieveData() {
   return { task: taskValue, priority: prioritySelected, completed: false };
 }
 
+// FILTRER LES TACHES SELON LE FILTRE ACTUEL
 function getFilteredTasks() {
   if (currentFilter === "inProgress") {
     return tableTask.filter((item) => item.completed === false);
@@ -34,6 +35,7 @@ function getFilteredTasks() {
   return tableTask;
 }
 
+// METTRE A JOUR LES STATISTIQUES
 function updateStats() {
   const total = tableTask.length;
   const completedCount = tableTask.filter((item) => item.completed).length;
@@ -166,6 +168,7 @@ function displayTask() {
   }
 }
 
+// ECOUTER LES EVENEMENTS DE CLIC SUR LES BOUTONS COMPLETE ET DELETE
 document.addEventListener("click", (event) => {
   const completeButton = event.target.closest(".complete-btn");
   const deleteButton = event.target.closest(".delete-btn");
