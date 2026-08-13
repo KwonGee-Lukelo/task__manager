@@ -560,4 +560,260 @@ main {
     width: 100%;
     margin: 0 auto;
   }
+
+  header .entete {
+    font-size: 1rem;
+    border-bottom: 1px solid var(--primary);
+    margin-bottom: 1rem;
+  }
+
+  header .card__analytics {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 1rem;
+  }
+
+  .analytics h2,
+  .features h2,
+  .progress__bar h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .analytics article {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background-color: var(--border);
+    padding: 1.5rem;
+    border-radius: 1.2rem;
+  }
+
+  article .icon i {
+    padding: 1rem;
+    font-size: 1.2rem;
+    background-color: var(--primary-foncé);
+    color: var(--primary-clair);
+    border-radius: 50%;
+  }
+
+  article .stats__chiffre {
+    padding: 0.5rem;
+  }
+
+  .progress__bar {
+    margin-top: 1.5rem;
+  }
+
+  .progress__bar .progress__group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .progress__group .bar {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid var(--border);
+    background-color: var(--info);
+    padding: 0.5rem;
+    border-radius: 25px;
+  }
+
+  /*===================
+  ===========
+  ==MAIN======*/
+  .features__filter {
+    margin-bottom: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  form input {
+    border-radius: 0.5rem;
+    padding: 10px 40px 10px 45px;
+    border: 1px solid var(--border);
+    outline: none;
+    margin-bottom: 0.5rem;
+  }
+
+  form input:focus,
+  form select:focus {
+    border-color: var(--primary-foncé);
+  }
+
+  form .saisis {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    width: 100px;
+    font-size: 1.2rem;
+    pointer-events: none;
+  }
+
+  form select {
+    border: 1px solid var(--border);
+    margin-bottom: 0.5rem;
+    padding: 10px 40px 10px 15px;
+    border-radius: 0.7rem;
+  }
+
+  form button {
+    border: none;
+    background-color: var(--primary);
+    padding: 0.8rem;
+    color: var(--primary-clair);
+    font-weight: 600;
+    border-radius: 0.7rem;
+    transition: 1s ease;
+    font-size: 0.9rem;
+  }
+
+  form button i {
+    font-size: 0.9rem;
+  }
+
+  form button:hover {
+    cursor: pointer;
+    background-color: var(--primary-foncé);
+  }
+
+  /*===================
+  ==FILTRE======*/
+  .features__tri {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .features__tri button {
+    border: none;
+    background-color: var(--primary);
+    padding: 0.7rem;
+    color: var(--primary-clair);
+    font-weight: 600;
+    border-radius: 0.7rem;
+  }
+
+  .features__tri button:hover {
+    cursor: pointer;
+  }
+
+  .features__tri .encours,
+  .features__tri .terminee {
+    background-color: var(--background);
+    color: var(--text-principal);
+    border: var(--border);
+  }
+  .features__tri .tous i {
+    font-size: 1rem;
+  }
+  .features__tri .encours i {
+    color: var(--warning);
+    font-size: 1rem;
+  }
+  .features__tri .terminee i {
+    color: var(--succes);
+    font-size: 1rem;
+  }
+
+  /* =============================
+  ======================
+  ====TABLE */
+  .tasks {
+    margin-top: 2rem;
+  }
+
+  .table__form {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border);
+  }
+
+  .table__form td {
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    padding: 1rem;
+  }
+
+  .table__form td .item__group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--border);
+    border-radius: 1.2rem;
+  }
+
+  .badge .badge__haute {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: var(--danger);
+  }
+  .badge .badge__moyenne {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: var(--warning);
+  }
+  .badge .badge__basse {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: var(--succes);
+  }
+
+  .badge .text__badgeHaute {
+    color: var(--danger);
+  }
+  .badge .text__badgeMoyenne {
+    color: var(--warning);
+  }
+  .badge .text__badgeBasse {
+    color: var(--succes);
+  }
+
+  .action__group {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .action__group button {
+    border: none;
+    border: 1px solid var(--border);
+    padding: 0.5rem;
+    border-radius: 0.7rem;
+  }
+  .action__group button:hover {
+    cursor: pointer;
+  }
+
+  .action__group button i {
+    font-size: 1.2rem;
+  }
 }
